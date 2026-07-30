@@ -1,0 +1,128 @@
+{
+  "contractName": "VeriFiLoan",
+  "abi": [
+    {
+      "inputs": [{ "internalType": "address", "name": "initialPlatform", "type": "address" }],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "loanId", "type": "uint256" },
+        { "indexed": true, "internalType": "bytes32", "name": "offChainId", "type": "bytes32" },
+        { "indexed": true, "internalType": "address", "name": "borrower", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "amountCents", "type": "uint256" },
+        { "indexed": false, "internalType": "uint256", "name": "interestRateBps", "type": "uint256" },
+        { "indexed": false, "internalType": "uint256", "name": "termMonths", "type": "uint256" }
+      ],
+      "name": "LoanCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "loanId", "type": "uint256" },
+        { "indexed": false, "internalType": "uint8", "name": "previousStatus", "type": "uint8" },
+        { "indexed": false, "internalType": "uint8", "name": "newStatus", "type": "uint8" }
+      ],
+      "name": "LoanStatusUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        { "internalType": "bytes32", "name": "offChainId", "type": "bytes32" },
+        { "internalType": "address", "name": "borrower", "type": "address" },
+        { "internalType": "uint256", "name": "amountCents", "type": "uint256" },
+        { "internalType": "uint256", "name": "interestRateBps", "type": "uint256" },
+        { "internalType": "uint256", "name": "termMonths", "type": "uint256" },
+        { "internalType": "uint256", "name": "monthlyPaymentCents", "type": "uint256" }
+      ],
+      "name": "createLoan",
+      "outputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "name": "approveLoan",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "name": "rejectLoan",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "name": "disburseLoan",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "name": "markRepaid",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "name": "markDefaulted",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "loanId", "type": "uint256" }],
+      "name": "getLoan",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "bytes32", "name": "offChainId", "type": "bytes32" },
+            { "internalType": "address", "name": "borrower", "type": "address" },
+            { "internalType": "uint256", "name": "amountCents", "type": "uint256" },
+            { "internalType": "uint256", "name": "interestRateBps", "type": "uint256" },
+            { "internalType": "uint256", "name": "termMonths", "type": "uint256" },
+            { "internalType": "uint256", "name": "monthlyPaymentCents", "type": "uint256" },
+            { "internalType": "uint8", "name": "status", "type": "uint8" },
+            { "internalType": "uint64", "name": "createdAt", "type": "uint64" },
+            { "internalType": "uint64", "name": "approvedAt", "type": "uint64" },
+            { "internalType": "uint64", "name": "disbursedAt", "type": "uint64" }
+          ],
+          "internalType": "struct VeriFiLoan.Loan",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "borrower", "type": "address" }],
+      "name": "getBorrowerLoans",
+      "outputs": [{ "internalType": "uint256[]", "name": "", "type": "uint256[]" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+      "name": "offChainIdToLoanId",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nextLoanId",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+}
