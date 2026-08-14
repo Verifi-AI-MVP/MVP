@@ -1,0 +1,93 @@
+{
+  "contractName": "TrustAttestation",
+  "abi": [
+    {
+      "inputs": [{ "internalType": "address", "name": "initialAttester", "type": "address" }],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "attestationId", "type": "uint256" },
+        { "indexed": true, "internalType": "address", "name": "subject", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "riskScore", "type": "uint256" },
+        { "indexed": false, "internalType": "bytes32", "name": "decisionHash", "type": "bytes32" },
+        { "indexed": false, "internalType": "string", "name": "modelVersion", "type": "string" }
+      ],
+      "name": "TrustAttested",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "subject", "type": "address" },
+        { "internalType": "uint256", "name": "riskScore", "type": "uint256" },
+        { "internalType": "bytes32", "name": "decisionHash", "type": "bytes32" },
+        { "internalType": "bytes32", "name": "factorsHash", "type": "bytes32" },
+        { "internalType": "string", "name": "modelVersion", "type": "string" }
+      ],
+      "name": "attest",
+      "outputs": [{ "internalType": "uint256", "name": "attestationId", "type": "uint256" }],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "attestationId", "type": "uint256" }],
+      "name": "getAttestation",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "address", "name": "subject", "type": "address" },
+            { "internalType": "uint256", "name": "riskScore", "type": "uint256" },
+            { "internalType": "bytes32", "name": "decisionHash", "type": "bytes32" },
+            { "internalType": "bytes32", "name": "factorsHash", "type": "bytes32" },
+            { "internalType": "string", "name": "modelVersion", "type": "string" },
+            { "internalType": "uint64", "name": "attestedAt", "type": "uint64" },
+            { "internalType": "address", "name": "attester", "type": "address" }
+          ],
+          "internalType": "struct TrustAttestation.Attestation",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "subject", "type": "address" }],
+      "name": "getLatestAttestation",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "address", "name": "subject", "type": "address" },
+            { "internalType": "uint256", "name": "riskScore", "type": "uint256" },
+            { "internalType": "bytes32", "name": "decisionHash", "type": "bytes32" },
+            { "internalType": "bytes32", "name": "factorsHash", "type": "bytes32" },
+            { "internalType": "string", "name": "modelVersion", "type": "string" },
+            { "internalType": "uint64", "name": "attestedAt", "type": "uint64" },
+            { "internalType": "address", "name": "attester", "type": "address" }
+          ],
+          "internalType": "struct TrustAttestation.Attestation",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "latestAttestationId",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "subject", "type": "address" }],
+      "name": "getSubjectAttestations",
+      "outputs": [{ "internalType": "uint256[]", "name": "", "type": "uint256[]" }],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+}
